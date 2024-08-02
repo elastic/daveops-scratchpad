@@ -12,7 +12,7 @@ metadata:
 
 spec:
   type: buildkite-pipeline
-  owner: group:amer-fed-education-team
+  owner: group:eng-prod-engagement-team
   system: buildkite
   implementation:
     apiVersion: buildkite.elastic.dev/v1
@@ -24,7 +24,36 @@ spec:
       repository: elastic/daveops-scratchpad
       pipeline_file: ".buildkite/pipeline.yml"
       teams:
-        amer-fed-education-team:
+        eng-prod-engagement-team:
+          access_level: MANAGE_BUILD_AND_READ
+        everyone:
+          access_level: READ_ONLY
+---
+# yaml-language-server: $schema=https://gist.githubusercontent.com/elasticmachine/988b80dae436cafea07d9a4a460a011d/raw/rre.schema.json
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: buildkite-pipeline-bump-sh-examples
+  description: Buildkite Pipeline for bump sh examples
+  links:
+    - title: Pipeline
+      url: https://buildkite.com/elastic/bump-sh-examples
+
+spec:
+  type: buildkite-pipeline
+  owner: group:eng-prod-engagement-team
+  system: buildkite
+  implementation:
+    apiVersion: buildkite.elastic.dev/v1
+    kind: Pipeline
+    metadata:
+      name: bump-sh-examples
+      description: scratch pad repo for tests
+    spec:
+      repository: elastic/daveops-scratchpad
+      pipeline_file: ".buildkite/bump-sh.yml"
+      teams:
+        eng-prod-engagement-team:
           access_level: MANAGE_BUILD_AND_READ
         everyone:
           access_level: READ_ONLY
